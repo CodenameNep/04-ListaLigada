@@ -145,12 +145,58 @@ void inserirElemento()
 
 void excluirElemento()
 {
-	
+	int exc;
+	if (primeiro == NULL) {
+		cout << "Lista vazia.\n";
+		return;
+	}
+
+	cout << "Digite o numero que deseja excluir: ";
+	cin >> exc;
+
+	NO* aux = primeiro;
+	NO* anterior = NULL;
+
+	while (aux != NULL && aux->valor != exc) {
+		anterior = aux;
+		aux = aux->prox;
+	}
+
+	if (aux == NULL) {
+		cout << "Nada encontrado.\n";
+		return;
+	}
+
+	if (anterior == NULL) {
+		primeiro = aux->prox;
+	}
+	else {
+		anterior->prox = aux->prox;
+	}
+
+	free(aux);
+	cout << "Elemento excluido com sucesso.\n";
+
+	exibirElementos();
+
 }
 
 void buscarElemento()
 {
-	
+	int num;
+	cout << "Qual numero deseja encontrar? ";
+	cin >> num;
+
+	NO* scr = posicaoElemento(num);
+
+	if (scr != NULL) {
+		cout << "Este numero foi encontrado \n";
+	}
+
+	if (scr == NULL) {
+		cout << "Este numero nao existe \n";
+	}
+
 }
 
 
